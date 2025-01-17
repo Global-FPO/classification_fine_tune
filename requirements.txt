@@ -5,4 +5,5 @@ nltk
 contractions
 unidecode
 transformers
+torch
   
