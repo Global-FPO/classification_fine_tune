@@ -6,3 +6,6 @@ contractions
 unidecode
 transformers
 torch
+accelerate
+sentencepiece
+peft

@@ -2,6 +2,8 @@ from cleaning import text_handle
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import torch
 
+
+
 model_n_ft_01 = AutoModelForSeq2SeqLM.from_pretrained("fine_tuned_T5small_01")
 tokenizer_n_ft_01 = AutoTokenizer.from_pretrained("fine_tuned_T5small_01")
 

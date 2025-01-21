@@ -28,7 +28,9 @@ def upload_file():
             return "Unsupported file type. Please upload a CSV or Excel file.", 400
         print(df.columns.to_list())
         try:
+            print('serching..')
             if 'Descriptions' in df.columns.to_list():
+                print('found')
                 
                 predicted_df=vendor_gen(df)
                 #pred=pd.read_excel(predicted_df)
@@ -39,11 +41,12 @@ def upload_file():
                  
         except Exception as e:
             raise e
+        else:
         # Convert DataFrame to HTML table
-        table_html = predicted_df.to_html(classes='table table-bordered', index=False)
- 
-        # Render data.html with the table
-        return render_template('data.html', table=table_html)
+            table_html = predicted_df.to_html(classes='table table-bordered', index=False)
+     
+            # Render data.html with the table
+            return render_template('data.html', table=table_html)
  
     except Exception as e:
         return f"Error processing the file: {e}", 500
