@@ -57,4 +57,4 @@ class UploadPDF(Resource):
 api.add_resource(UploadPDF, "/upload_pdf")
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5002, threaded=True)
+    app.run(debug=True, host="0.0.0.0", port=8000, threaded=True)
