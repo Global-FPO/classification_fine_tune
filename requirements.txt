@@ -1,0 +1,13 @@
+flask
+flask_restful
+flask_cors
+pandas
+openpyxl
+nltk
+contractions
+unidecode
+transformers
+torch
+accelerate
+sentencepiece
+peft
