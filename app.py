@@ -39,18 +39,28 @@ class UploadPDF(Resource):
                 if 'Descriptions' in df.columns.to_list():
                     print('Found Descriptions column')
                     predicted_df = vendor_gen(df)  # Process with your vendor_gen function
-                    print(predicted_df)
-                    print(predicted_df.isnull().sum())
+                   
+                    
 
                     # Convert predicted_df to JSON format
-                    predicted_data = predicted_df.to_json(orient="split")
+                    #predicted_data = predicted_df.to_json(orient="split")
+                    #print(predicted_data)
+                    
+                    predicted_data = predicted_df.to_dict(orient='records')
+   
+                    column_names = predicted_df.columns.tolist()
+                    response = {
+                        'data_headers' : column_names,
+                        'data': predicted_data
+                    }
+                    print(response)
                 else:
                     return jsonify({"error": '"Descriptions" column not found in your file.'}), 400
 
             except Exception as e:
                 return jsonify({"error": str(e)}), 500
 
-        return jsonify({"message": "Files uploaded successfully", "files": uploaded_files, "predicted_data": predicted_data})
+        return jsonify({"message": "Files uploaded successfully", "files": uploaded_files, "predicted_data": response})
     
     
 
